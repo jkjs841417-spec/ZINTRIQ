@@ -1,23 +1,2 @@
-/* ZINTRIQ theme switcher */
-(function () {
-  const key = "zintriq-theme";
-  const toggle = document.getElementById("themeToggle");
-  function applyTheme(theme) {
-    document.body.classList.toggle("dark-mode", theme === "dark");
-    if (toggle) {
-      toggle.innerHTML = theme === "dark"
-        ? '<i data-lucide="sun"></i>'
-        : '<i data-lucide="moon"></i>';
-      if (window.lucide) lucide.createIcons();
-    }
-    document.documentElement.style.colorScheme = theme;
-  }
-  let saved = "light";
-  try { saved = localStorage.getItem(key) || "light"; } catch (_) {}
-  applyTheme(saved);
-  if (toggle) toggle.addEventListener("click", function () {
-    const next = document.body.classList.contains("dark-mode") ? "light" : "dark";
-    applyTheme(next);
-    try { localStorage.setItem(key, next); } catch (_) {}
-  });
-})();
+(()=>{const saved=window.ZintriqStorage;})();
+(function(){const key="zintriq_theme";function apply(mode){document.body.classList.toggle("dark-mode",mode==="dark");const toggle=document.getElementById("darkModeSetting");if(toggle)toggle.checked=mode==="dark";const icon=document.querySelector("#themeToggle i");if(icon){icon.setAttribute("data-lucide",mode==="dark"?"sun":"moon");if(window.lucide)lucide.createIcons()} }const initial=localStorage.getItem(key)||"light";apply(initial);document.addEventListener("DOMContentLoaded",()=>{document.getElementById("themeToggle")?.addEventListener("click",()=>{const mode=document.body.classList.contains("dark-mode")?"light":"dark";localStorage.setItem(key,mode);apply(mode)});document.getElementById("darkModeSetting")?.addEventListener("change",e=>{const mode=e.target.checked?"dark":"light";localStorage.setItem(key,mode);apply(mode)})})})();

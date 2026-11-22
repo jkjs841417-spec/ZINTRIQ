@@ -1,5 +1,1 @@
-/* Analytics placeholder. Populate only with metrics returned by authorized APIs. */
-window.ZINTRIQAnalytics = {
-  connected: false,
-  metrics: { reach: null, engagement: null, followers: null, impressions: null }
-};
+document.addEventListener("DOMContentLoaded",()=>{document.getElementById("refreshAnalytics")?.addEventListener("click",async()=>{if(!ZintriqAPI.configured()){Zintriq.toast("Configure the backend URL to load analytics.");return}try{await ZintriqAPI.request("/api/analytics");Zintriq.toast("Analytics endpoint responded. Map its fields to the dashboard.")}catch(e){Zintriq.toast(e.message)}})});

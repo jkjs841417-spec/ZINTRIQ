@@ -1,7 +1,2 @@
-/* Social account module placeholder.
-   Connect accounts only through official OAuth flows on a secure backend.
-*/
-window.ZINTRIQAccounts = {
-  platforms: ["Instagram", "Facebook", "YouTube", "LinkedIn", "X", "TikTok"],
-  status: "Not connected"
-};
+window.ZintriqAccounts={platforms:["Instagram","Facebook","LinkedIn","X","YouTube","Pinterest"],render(){const host=document.getElementById("accountList");const saved=ZintriqStorage.get("accounts",[]);host.innerHTML=this.platforms.map((name,i)=>{const item=saved.find(a=>a.name===name);return '<article class="account-card"><div class="account-head"><span class="platform-icon">'+name.charAt(0)+'</span><div><strong>'+name+'</strong><small>'+(item?"Added to workspace":"Not connected")+'</small></div></div><p>'+(item?"This account is saved locally. Live publishing requires OAuth/API integration.":"Connect this channel through your backend's official OAuth flow.")+'</p><button class="'+(item?"secondary-button":"primary-button")+' account-action" data-platform="'+name+'">'+(item?"Remove local entry":"Add placeholder")+'</button></article>'}).join("");host.querySelectorAll(".account-action").forEach(btn=>btn.addEventListener("click",()=>{let list=ZintriqStorage.get("accounts",[]);if(list.some(a=>a.name===btn.dataset.platform)){list=list.filter(a=>a.name!==btn.dataset.platform);Zintriq.toast("Local account entry removed")}else{list.push({name:btn.dataset.platform});Zintriq.toast("Placeholder added. OAuth is not connected.")}ZintriqStorage.set("accounts",list);this.render();ZintriqDashboard.refresh()}))}};
+document.addEventListener("DOMContentLoaded",()=>{ZintriqAccounts.render();document.getElementById("addAccountBtn")?.addEventListener("click",()=>{ZintriqNavigate("accounts");Zintriq.toast("Choose a platform and add a local placeholder.")})});

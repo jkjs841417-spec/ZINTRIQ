@@ -1,11 +1,1 @@
-/* Workspace settings helpers */
-window.ZINTRIQSettings = {
-  get(key, fallback = "") {
-    try { return localStorage.getItem("zintriq-setting-" + key) ?? fallback; }
-    catch (_) { return fallback; }
-  },
-  set(key, value) {
-    try { localStorage.setItem("zintriq-setting-" + key, String(value)); return true; }
-    catch (_) { return false; }
-  }
-};
+document.addEventListener("DOMContentLoaded",()=>{const display=document.getElementById("apiBaseDisplay"),status=document.getElementById("settingsConnection"),label=document.getElementById("connectionLabel");function show(){const configured=ZintriqAPI.configured();display.textContent=configured?ZintriqAPI.base():"API base URL is not configured.";status.textContent=configured?"Backend URL configured":"Demo mode";label.textContent=configured?"API configured":"Demo mode";}show();document.getElementById("testApiBtn")?.addEventListener("click",async()=>{const result=document.getElementById("apiTestResult");if(!ZintriqAPI.configured()){result.textContent="Set window.ZINTRIQ_API_BASE in js/api.js first.";return}result.textContent="Testing…";try{await ZintriqAPI.health();result.textContent="Backend health check successful."}catch(e){result.textContent="Connection failed: "+e.message}});document.getElementById("clearLocalData")?.addEventListener("click",()=>{if(confirm("Delete all locally saved ZINTRIQ drafts and account placeholders from this browser?")){ZintriqStorage.remove("posts");ZintriqStorage.remove("accounts");ZintriqDashboard.refresh();ZintriqRenderContent?.();ZintriqAccounts.render();Zintriq.toast("Local drafts and placeholders cleared.")}})});

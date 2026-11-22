@@ -1,13 +1,2 @@
-/* Content studio local draft helpers */
-window.ZINTRIQContent = {
-  saveDraft(draft) {
-    const drafts = JSON.parse(localStorage.getItem("zintriq-drafts") || "[]");
-    drafts.push({ ...draft, savedAt: new Date().toISOString() });
-    localStorage.setItem("zintriq-drafts", JSON.stringify(drafts));
-    return drafts.length;
-  },
-  getDrafts() {
-    try { return JSON.parse(localStorage.getItem("zintriq-drafts") || "[]"); }
-    catch (_) { return []; }
-  }
-};
+document.addEventListener("DOMContentLoaded",()=>{const input=document.getElementById("postText"),preview=document.getElementById("postPreview"),count=document.getElementById("charCount");function update(){preview.textContent=input.value||"Your post preview will appear here as you type.";count.textContent=input.value.length+" / 2200"}input.addEventListener("input",update);document.getElementById("clearPost").addEventListener("click",()=>{input.value="";update()});document.getElementById("saveDraft").addEventListener("click",()=>{const text=input.value.trim();if(!text){Zintriq.toast("Write a caption before saving.");return}const platforms=[...document.querySelectorAll("#platformChecks input:checked")].map(x=>x.value);const posts=ZintriqStorage.get("posts",[]);posts.push({id:Date.now(),text,platforms,status:"Draft",createdAt:new Date().toISOString()});ZintriqStorage.set("posts",posts);input.value="";document.querySelectorAll("#platformChecks input").forEach(x=>x.checked=false);update();renderContent();ZintriqDashboard.refresh();Zintriq.toast("Draft saved on this device.")});function renderContent(){const host=document.getElementById("contentList"),posts=ZintriqStorage.get("posts",[]);if(!posts.length){host.innerHTML='<div class="empty-state compact"><i data-lucide="file-text"></i><strong>No saved drafts</strong><span>Create a post to see it here.</span></div>'}else{host.innerHTML=posts.slice().reverse().map(p=>'<div class="content-item"><div class="platform-icon">P</div><div><strong>'+escapeHtml(p.text.slice(0,90))+'</strong><small>'+(p.platforms.join(", ")||"No platform")+' · '+p.status+'</small></div><button class="icon-button delete-post" data-id="'+p.id+'" aria-label="Delete draft"><i data-lucide="trash-2"></i></button></div>').join("");host.querySelectorAll(".delete-post").forEach(b=>b.addEventListener("click",()=>{ZintriqStorage.set("posts",ZintriqStorage.get("posts",[]).filter(p=>p.id!==Number(b.dataset.id)));renderContent();ZintriqDashboard.refresh()}))}if(window.lucide)lucide.createIcons()}window.ZintriqRenderContent=renderContent;renderContent();document.querySelectorAll(".prompt-chip").forEach(b=>b.addEventListener("click",()=>{document.getElementById("assistantInput").value=b.textContent;ZintriqNavigate("assistant")}))});
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}

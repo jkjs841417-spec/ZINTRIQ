@@ -1,13 +1,1 @@
-/* Calendar data helpers; scheduling execution requires a backend service. */
-window.ZINTRIQCalendar = {
-  saveSchedule(item) {
-    const items = JSON.parse(localStorage.getItem("zintriq-schedule") || "[]");
-    items.push(item);
-    localStorage.setItem("zintriq-schedule", JSON.stringify(items));
-    return items;
-  },
-  getSchedule() {
-    try { return JSON.parse(localStorage.getItem("zintriq-schedule") || "[]"); }
-    catch (_) { return []; }
-  }
-};
+document.addEventListener("DOMContentLoaded",()=>{let cursor=new Date();const grid=document.getElementById("calendarGrid");function render(){const y=cursor.getFullYear(),m=cursor.getMonth(),first=new Date(y,m,1),last=new Date(y,m+1,0),today=new Date();document.getElementById("calendarMonth").textContent=cursor.toLocaleDateString(undefined,{month:"long",year:"numeric"});const names=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];grid.innerHTML=names.map(n=>'<div class="calendar-cell head">'+n+'</div>').join("");for(let i=0;i<first.getDay();i++)grid.innerHTML+='<div class="calendar-cell"></div>';for(let d=1;d<=last.getDate();d++){const isToday=d===today.getDate()&&m===today.getMonth()&&y===today.getFullYear();grid.innerHTML+='<div class="calendar-cell '+(isToday?"today":"")+'">'+d+'</div>'}}document.getElementById("prevMonth").addEventListener("click",()=>{cursor.setMonth(cursor.getMonth()-1);render()});document.getElementById("nextMonth").addEventListener("click",()=>{cursor.setMonth(cursor.getMonth()+1);render()});render()});

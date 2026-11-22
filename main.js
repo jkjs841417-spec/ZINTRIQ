@@ -1,5 +1,1 @@
-/* ZINTRIQ app bootstrap */
-document.addEventListener("DOMContentLoaded", function () {
-  if (window.lucide) lucide.createIcons();
-  console.info("ZINTRIQ frontend loaded. Demo interface only; connect approved APIs for live features.");
-});
+document.addEventListener("DOMContentLoaded",()=>{ZintriqDashboard.refresh();document.getElementById("refreshDashboard")?.addEventListener("click",()=>{ZintriqDashboard.refresh();Zintriq.toast("Workspace refreshed.")});if(window.lucide)lucide.createIcons();console.info("ZINTRIQ frontend ready. Demo mode until backend API routes are configured.")});

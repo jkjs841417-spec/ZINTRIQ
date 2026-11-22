@@ -1,7 +1,3 @@
-/* Dashboard starter interactions. Live metrics require connected platform APIs. */
-(function () {
-  const create = document.getElementById("createPostBtn");
-  if (create) create.addEventListener("click", () => {
-    if (window.ZINTRIQ && window.ZINTRIQ.showPage) window.ZINTRIQ.showPage("content");
-  });
-})();
+window.ZintriqDashboard = {};
+window.ZintriqDashboard.refresh=function(){const posts=ZintriqStorage.get("posts",[]);const accounts=ZintriqStorage.get("accounts",[]);document.getElementById("statAccounts").textContent=accounts.length;document.getElementById("accountNavCount").textContent=accounts.length;document.getElementById("statPublished").textContent=posts.filter(p=>p.status==="Published").length;document.getElementById("statScheduled").textContent=posts.filter(p=>p.status==="Scheduled").length;document.getElementById("statInbox").textContent="—";const host=document.getElementById("recentContent");if(!posts.length){host.className="empty-state compact";host.innerHTML='<i data-lucide="files"></i><strong>No content yet</strong><span>Your saved posts will appear here.</span>'}else{host.className="";host.innerHTML=posts.slice(-4).reverse().map(p=>'<div class="content-item"><div class="platform-icon">P</div><div><strong>'+escapeHtml(p.text.slice(0,75)||"Untitled post")+'</strong><small>'+escapeHtml((p.platforms||[]).join(", ")||"No platform selected")+' · '+escapeHtml(p.status)+'</small></div></div>').join("")}if(window.lucide)lucide.createIcons()};
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}

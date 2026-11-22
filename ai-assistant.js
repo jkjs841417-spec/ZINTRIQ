@@ -1,7 +1,1 @@
-/* AI integration placeholder.
-   Never put private API keys in frontend JavaScript.
-*/
-window.ZINTRIQAI = {
-  ready: false,
-  message: "Connect an AI provider through a secure backend to enable generation."
-};
+document.addEventListener("DOMContentLoaded",()=>{const form=document.getElementById("assistantForm"),input=document.getElementById("assistantInput"),messages=document.getElementById("chatMessages");form.addEventListener("submit",async e=>{e.preventDefault();const prompt=input.value.trim();if(!prompt)return;const user=document.createElement("div");user.className="user-message";user.textContent=prompt;messages.appendChild(user);input.value="";const reply=document.createElement("div");reply.className="assistant-message";reply.innerHTML='<span class="assistant-avatar"><i data-lucide="sparkles"></i></span><div><strong>ZINTRIQ assistant</strong><p></p></div>';messages.appendChild(reply);const p=reply.querySelector("p");if(ZintriqAPI.configured()){try{const data=await ZintriqAPI.request("/api/ai/generate",{method:"POST",body:JSON.stringify({prompt})});p.textContent=data.reply||data.content||JSON.stringify(data)}catch(err){p.textContent="Backend request could not be completed: "+err.message}}else{p.textContent="Your prompt is ready. To generate an AI answer, configure your backend URL and connect its AI route in js/api.js. Suggested next step: define your brand voice, target audience, and the action you want readers to take."}messages.scrollTop=messages.scrollHeight;if(window.lucide)lucide.createIcons()})});
