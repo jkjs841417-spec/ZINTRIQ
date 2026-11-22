@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ZINTRIQ | AI Social Media Management</title>
+
+  <meta name="description" content="Manage your social media accounts with ZINTRIQ AI. Create, schedule, analyze and organize your social media from one workspace.">
+
+  <meta name="theme-color" content="#f5f5f7">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+      <div class="brand">
+        <div class="brand-icon">Z</div>
+        <div class="brand-name">ZINTRIQ</div>
+      </div>
+
+      <div class="workspace-label">WORKSPACE</div>
+
+      <nav class="navigation">
+
+        <a href="#dashboard" class="nav-link active" data-page="dashboard">
+          <i data-lucide="layout-dashboard"></i>
+          <span>Overview</span>
+        </a>
+
+        <a href="#accounts" class="nav-link" data-page="accounts">
+          <i data-lucide="users"></i>
+          <span>Social Accounts</span>
+        </a>
+
+        <a href="#content" class="nav-link" data-page="content">
+          <i data-lucide="layers"></i>
+          <span>Content Studio</span>
+        </a>
+
+        <a href="#calendar" class="nav-link" data-page="calendar">
+          <i data-lucide="calendar-days"></i>
+          <span>Content Calendar</span>
+        </a>
+
+        <div class="workspace-label">MANAGEMENT</div>
+
+        <a href="#ai-assistant" class="nav-link" data-page="ai-assistant">
+          <i data-lucide="sparkles"></i>
+          <span>AI Assistant</span>
+          <span class="new-tag">AI</span>
+        </a>
+
+        <a href="#inbox" class="nav-link" data-page="inbox">
+          <i data-lucide="inbox"></i>
+          <span>Unified Inbox</span>
+          <span class="notification-count">3</span>
+        </a>
+
+        <a href="#analytics" class="nav-link" data-page="analytics">
+          <i data-lucide="chart-no-axes-combined"></i>
+          <span>Analytics</span>
+        </a>
+
+      </nav>
+
+      <div class="sidebar-bottom">
+
+        <a href="#settings" class="nav-link" data-page="settings">
+          <i data-lucide="settings"></i>
+          <span>Settings</span>
+        </a>
+
+        <div class="user-profile">
+          <div class="user-avatar">Z</div>
+          <div class="user-info">
+            <strong>My Workspace</strong>
+            <small>Free Plan</small>
+          </div>
+          <i data-lucide="chevron-down"></i>
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- TOPBAR -->
+      <header class="topbar">
+
+        <div class="topbar-left">
+
+          <button class="icon-button menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <i data-lucide="menu"></i>
+          </button>
+
+          <div class="breadcrumb">
+            <span>Workspace</span>
+            <i data-lucide="chevron-right"></i>
+            <strong id="pageTitle">Overview</strong>
+          </div>
+
+        </div>
+
+        <div class="topbar-right">
+
+          <button class="icon-button" id="themeToggle" aria-label="Toggle theme">
+            <i data-lucide="moon"></i>
+          </button>
+
+          <button class="icon-button notification-button" aria-label="Notifications">
+            <i data-lucide="bell"></i>
+            <span class="notification-dot"></span>
+          </button>
+
+          <div class="topbar-avatar">Z</div>
+
+        </div>
+
+      </header>
+
+
+      <!-- PAGE CONTAINER -->
+      <section class="page-container" id="pageContainer">
+
+        <!-- DASHBOARD PAGE -->
+        <section class="page active" id="dashboard">
+
+          <div class="welcome-section">
+
+            <div>
+              <div class="eyebrow">YOUR SOCIAL COMMAND CENTER</div>
+              <h1>Good morning<span class="wave"> ✨</span></h1>
+              <p>Here's what's happening with your social media today.</p>
+            </div>
+
+            <button class="primary-button" id="createPostBtn">
+              <i data-lucide="plus"></i>
+              Create Post
+            </button>
+
+          </div>
+
+
+          <!-- STATS -->
+          <div class="stats-grid">
+
+            <div class="stat-card">
+              <div class="stat-top">
+                <span>Connected Accounts</span>
+                <i data-lucide="users"></i>
+              </div>
+              <h2>0</h2>
+              <small>Connect your first account</small>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-top">
+                <span>Scheduled Posts</span>
+                <i data-lucide="calendar-check"></i>
+              </div>
+              <h2>0</h2>
+              <small>No posts scheduled</small>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-top">
+                <span>Total Engagement</span>
+                <i data-lucide="trending-up"></i>
+              </div>
+              <h2>0</h2>
+              <small>Waiting for account data</small>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-top">
+                <span>Pending Messages</span>
+                <i data-lucide="message-circle"></i>
+              </div>
+              <h2>0</h2>
+              <small>Your inbox is clear</small>
+            </div>
+
+          </div>
+
+
+          <!-- DASHBOARD GRID -->
+          <div class="dashboard-grid">
+
+            <div class="content-card overview-card">
+
+              <div class="card-heading">
+                <div>
+                  <h3>Social Overview</h3>
+                  <p>Your connected social platforms</p>
+                </div>
+                <button class="text-button" data-go="accounts">View all</button>
+              </div>
+
+              <div class="empty-state">
+                <div class="empty-icon">
+                  <i data-lucide="share-2"></i>
+                </div>
+                <h4>No accounts connected</h4>
+                <p>Connect your social media accounts to see your performance here.</p>
+                <button class="secondary-button" data-go="accounts">
+                  Connect Account
+                </button>
+              </div>
+
+            </div>
+
+
+            <div class="content-card ai-card">
+
+              <div class="card-heading">
+                <div>
+                  <h3>AI Assistant</h3>
+                  <p>Your creative companion</p>
+                </div>
+                <div class="ai-icon">
+                  <i data-lucide="sparkles"></i>
+                </div>
+              </div>
+
+              <div class="ai-content">
+                <h2>Ideas become impact.</h2>
+                <p>Generate captions, discover content ideas and plan your next campaign.</p>
+                <button class="primary-button" data-go="ai-assistant">
+                  Explore AI Assistant
+                  <i data-lucide="arrow-up-right"></i>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- BOTTOM GRID -->
+          <div class="dashboard-grid bottom-grid">
+
+            <div class="content-card">
+
+              <div class="card-heading">
+                <div>
+                  <h3>Upcoming Content</h3>
+                  <p>Your scheduled posts</p>
+                </div>
+                <button class="text-button" data-go="calendar">Calendar</button>
+              </div>
+
+              <div class="small-empty">
+                <i data-lucide="calendar"></i>
+                <span>No upcoming content yet.</span>
+              </div>
+
+            </div>
+
+
+            <div class="content-card">
+
+              <div class="card-heading">
+                <div>
+                  <h3>Recent Activity</h3>
+                  <p>Your workspace updates</p>
+                </div>
+              </div>
+
+              <div class="small-empty">
+                <i data-lucide="activity"></i>
+                <span>Your activity will appear here.</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- OTHER PAGE PLACEHOLDERS -->
+        <section class="page" id="accounts">
+          <div class="page-heading">
+            <div class="eyebrow">YOUR PLATFORMS</div>
+            <h1>Social Accounts</h1>
+            <p>Manage your connected social media accounts.</p>
+          </div>
+          <div class="placeholder-card">
+            <i data-lucide="users"></i>
+            <h3>Social Accounts</h3>
+            <p>Account management will be added in the next development steps.</p>
+          </div>
+        </section>
+
+
+        <section class="page" id="content">
+          <div class="page-heading">
+            <div class="eyebrow">CREATE SOMETHING GREAT</div>
+            <h1>Content Studio</h1>
+            <p>Create and organize your social media content.</p>
+          </div>
+          <div class="placeholder-card">
+            <i data-lucide="layers"></i>
+            <h3>Your creative space</h3>
+            <p>Content creation tools will appear here.</p>
+          </div>
+        </section>
+
+
+        <section class="page" id="calendar">
+          <div class="page-heading">
+            <div class="eyebrow">PLAN AHEAD</div>
+            <h1>Content Calendar</h1>
+            <p>Organize your social media publishing schedule.</p>
+          </div>
+          <div class="placeholder-card">
+            <i data-lucide="calendar-days"></i>
+            <h3>Your calendar</h3>
+            <p>Your content calendar will appear here.</p>
+          </div>
+        </section>
+
+
+        <section class="page" id="ai-assistant">
+          <div class="page-heading">
+            <div class="eyebrow">INTELLIGENT WORKSPACE</div>
+            <h1>AI Assistant</h1>
+            <p>Your assistant for smarter social media management.</p>
+          </div>
+          <div class="placeholder-card">
+            <i data-lucide="sparkles"></i>
+            <h3>Meet your AI Assistant</h3>
+            <p>AI tools will be integrated in a later step.</p>
+          </div>
+        </section>
+
+
+        <section class="page" id="inbox">
+          <div class="page-heading">
+            <div class="eyebrow">ALL CONVERSATIONS</div>
+            <h1>Unified Inbox</h1>
+            <p>Manage your messages and comments in one place.</p>
+          </div>
+          <div class="placeholder-card">
+            <i data-lucide="inbox"></i>
+            <h3>Your inbox</h3>
+            <p>Connect your platforms to manage conversations here.</p>
+          </div>
+        </section>
+
+
+        <section class="page" id="analytics">
+          <div class="page-heading">
+            <div class="eyebrow">PERFORMANCE INSIGHTS</div>
+            <h1>Analytics</h1>
+            <p>Understand your social media performance.</p>
+          </div>
+          <div class="placeholder-card">
+            <i data-lucide="chart-no-axes-combined"></i>
+            <h3>Your analytics</h3>
+            <p>Performance reports will appear here.</p>
+          </div>
+        </section>
+
+
+        <section class="page" id="settings">
+          <div class="page-heading">
+            <div class="eyebrow">PREFERENCES</div>
+            <h1>Settings</h1>
+            <p>Manage your workspace preferences.</p>
+          </div>
+          <div class="placeholder-card">
+            <i data-lucide="settings"></i>
+            <h3>Workspace Settings</h3>
+            <p>Settings and preferences will be added here.</p>
+          </div>
+        </section>
+
+      </section>
+
+
+      <footer class="footer">
+        <span>© 2026 ZINTRIQ. All rights reserved.</span>
+        <span>Designed for smarter social growth.</span>
+      </footer>
+
+    </main>
+
+  </div>
+
+
+  <!-- JAVASCRIPT FILES -->
+  <script src="js/theme.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  </script>
+
+</body>
+</html>
