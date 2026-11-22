@@ -1,130 +1,633 @@
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f6f7fb">
-  <title>ZINTRIQ — Social Media Command Center</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/themes.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f6f7fb">
+<title>ZINTRIQ - Social Media Command Center</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- CSS FILES: all in repository root -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="themes.css">
+<link rel="stylesheet" href="responsive.css">
+
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body>
+
 <div class="app-shell">
-  <aside class="sidebar" id="sidebar">
-    <a class="brand" href="#overview"><span class="brand-mark">Z</span><span>ZINTRIQ</span></a>
-    <div class="workspace-label">WORKSPACE</div>
-    <nav class="nav-list" id="mainNav">
-      <button class="nav-item active" data-page="overview"><i data-lucide="layout-dashboard"></i><span>Overview</span></button>
-      <button class="nav-item" data-page="accounts"><i data-lucide="network"></i><span>Social accounts</span><b class="nav-count" id="accountNavCount">0</b></button>
-      <button class="nav-item" data-page="content"><i data-lucide="square-pen"></i><span>Content studio</span></button>
-      <button class="nav-item" data-page="calendar"><i data-lucide="calendar-days"></i><span>Calendar</span></button>
-      <button class="nav-item" data-page="assistant"><i data-lucide="sparkles"></i><span>AI assistant</span><span class="nav-dot"></span></button>
-      <button class="nav-item" data-page="inbox"><i data-lucide="inbox"></i><span>Unified inbox</span></button>
-      <button class="nav-item" data-page="analytics"><i data-lucide="chart-no-axes-combined"></i><span>Analytics</span></button>
-    </nav>
-    <div class="sidebar-bottom">
-      <button class="nav-item" data-page="settings"><i data-lucide="settings-2"></i><span>Settings</span></button>
-      <div class="plan-card"><div class="plan-icon"><i data-lucide="zap"></i></div><strong>Your workspace</strong><p>Connect your backend to unlock live data and automation.</p><button class="text-button" data-page="settings">Configure workspace <i data-lucide="arrow-up-right"></i></button></div>
-      <div class="profile-row"><div class="avatar">JM</div><div class="profile-copy"><strong>Workspace owner</strong><small>Administrator</small></div><button class="icon-button" aria-label="Profile menu"><i data-lucide="more-horizontal"></i></button></div>
-    </div>
-  </aside>
 
-  <main class="main-area">
-    <header class="topbar">
-      <button class="icon-button menu-toggle" id="menuToggle" aria-label="Open menu"><i data-lucide="menu"></i></button>
-      <div class="breadcrumb"><span>Workspace</span><i data-lucide="chevron-right"></i><strong id="pageTitle">Overview</strong></div>
-      <div class="topbar-actions">
-        <div class="connection-pill"><span class="status-dot"></span><span id="connectionLabel">Demo mode</span></div>
-        <button class="icon-button" id="themeToggle" aria-label="Toggle theme"><i data-lucide="moon"></i></button>
-        <button class="primary-button small" data-page="content"><i data-lucide="plus"></i> Create post</button>
-      </div>
-    </header>
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
 
-    <div class="page-wrap">
-      <section class="page active" id="page-overview">
-        <div class="page-heading"><div><p class="eyebrow">YOUR SOCIAL MEDIA, IN ONE PLACE</p><h1>Good to see you.</h1><p class="muted">Here’s what’s happening across your workspace.</p></div><button class="secondary-button" id="refreshDashboard"><i data-lucide="refresh-cw"></i> Refresh</button></div>
-        <div class="stats-grid">
-          <article class="stat-card"><div class="stat-top"><span>Connected accounts</span><i data-lucide="users"></i></div><strong id="statAccounts">0</strong><small class="stat-note">Social profiles in workspace</small></article>
-          <article class="stat-card"><div class="stat-top"><span>Published posts</span><i data-lucide="send"></i></div><strong id="statPublished">0</strong><small class="stat-note">Posts marked as published</small></article>
-          <article class="stat-card"><div class="stat-top"><span>Scheduled posts</span><i data-lucide="calendar-clock"></i></div><strong id="statScheduled">0</strong><small class="stat-note">Upcoming content</small></article>
-          <article class="stat-card"><div class="stat-top"><span>Inbox messages</span><i data-lucide="messages-square"></i></div><strong id="statInbox">0</strong><small class="stat-note">Messages in your inbox</small></article>
-        </div>
-        <div class="content-grid">
-          <article class="panel chart-panel"><div class="panel-heading"><div><h2>Performance snapshot</h2><p class="muted">Engagement overview</p></div><span class="tag">Last 7 days</span></div><div class="chart-placeholder" id="overviewChart"><div class="chart-bars"><i style="height:35%"></i><i style="height:55%"></i><i style="height:42%"></i><i style="height:76%"></i><i style="height:62%"></i><i style="height:90%"></i><i style="height:70%"></i></div><div class="chart-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div></div><p class="chart-footnote">Connect analytics endpoints to replace this preview with live metrics.</p></article>
-          <article class="panel quick-panel"><div class="panel-heading"><div><h2>Quick actions</h2><p class="muted">Jump back into your workflow</p></div></div><button class="action-row" data-page="content"><span class="action-icon purple"><i data-lucide="pen-line"></i></span><span><strong>Create content</strong><small>Write and prepare a new post</small></span><i data-lucide="chevron-right"></i></button><button class="action-row" data-page="accounts"><span class="action-icon blue"><i data-lucide="plug"></i></span><span><strong>Connect accounts</strong><small>Manage your social profiles</small></span><i data-lucide="chevron-right"></i></button><button class="action-row" data-page="assistant"><span class="action-icon orange"><i data-lucide="sparkles"></i></span><span><strong>Ask AI assistant</strong><small>Get ideas for your next post</small></span><i data-lucide="chevron-right"></i></button></article>
-        </div>
-        <article class="panel table-panel"><div class="panel-heading"><div><h2>Recent content</h2><p class="muted">Your latest drafts and posts</p></div><button class="text-button" data-page="content">View content <i data-lucide="arrow-right"></i></button></div><div id="recentContent" class="empty-state compact"><i data-lucide="files"></i><strong>No content yet</strong><span>Your saved posts will appear here.</span></div></article>
-      </section>
+<a class="brand" href="#overview">
+<span class="brand-mark">Z</span>
+<span>ZINTRIQ</span>
+</a>
 
-      <section class="page" id="page-accounts">
-        <div class="page-heading"><div><p class="eyebrow">CHANNEL MANAGEMENT</p><h1>Social accounts</h1><p class="muted">Manage the channels connected to your workspace.</p></div><button class="primary-button" id="addAccountBtn"><i data-lucide="plus"></i> Add account</button></div>
-        <div class="notice"><i data-lucide="info"></i><span>Live account linking requires your backend OAuth flow and official platform API permissions. Do not enter social passwords here.</span></div>
-        <div class="account-grid" id="accountList"></div>
-      </section>
+<div class="workspace-label">WORKSPACE</div>
 
-      <section class="page" id="page-content">
-        <div class="page-heading"><div><p class="eyebrow">PLAN. CREATE. PUBLISH.</p><h1>Content studio</h1><p class="muted">Create posts and keep your ideas organized.</p></div><span class="tag">Draft workspace</span></div>
-        <div class="editor-layout">
-          <article class="panel editor-panel"><div class="panel-heading"><div><h2>New post</h2><p class="muted">Your content is saved in this browser.</p></div><span class="draft-indicator"><span></span> Draft</span></div>
-            <label class="field-label" for="postText">Post caption</label><textarea id="postText" class="text-area" rows="7" maxlength="2200" placeholder="What would you like to share with your audience?"></textarea><div class="field-meta"><span id="charCount">0 / 2200</span><span>Tip: Keep your opening line engaging.</span></div>
-            <label class="field-label">Choose platforms</label><div class="platform-checks" id="platformChecks"><label><input type="checkbox" value="Instagram"> Instagram</label><label><input type="checkbox" value="Facebook"> Facebook</label><label><input type="checkbox" value="LinkedIn"> LinkedIn</label><label><input type="checkbox" value="X"> X</label></div>
-            <div class="editor-actions"><button class="secondary-button" id="clearPost">Clear</button><button class="primary-button" id="saveDraft"><i data-lucide="save"></i> Save draft</button></div>
-          </article>
-          <aside class="panel preview-panel"><div class="panel-heading"><h2>Post preview</h2><span class="tag">Preview</span></div><div class="preview-card"><div class="preview-user"><div class="avatar">Z</div><div><strong>Your brand</strong><small>Social post preview</small></div></div><p id="postPreview">Your post preview will appear here as you type.</p><div class="preview-placeholder"><i data-lucide="image"></i><span>Media preview area</span></div><div class="preview-footer"><i data-lucide="heart"></i><i data-lucide="message-circle"></i><i data-lucide="send"></i></div></div></aside>
-        </div>
-        <article class="panel table-panel"><div class="panel-heading"><div><h2>Saved content</h2><p class="muted">Drafts stored in this browser</p></div></div><div id="contentList"></div></article>
-      </section>
+<nav class="nav-list">
 
-      <section class="page" id="page-calendar">
-        <div class="page-heading"><div><p class="eyebrow">PUBLISHING PLAN</p><h1>Content calendar</h1><p class="muted">Review your planned publishing dates.</p></div><button class="primary-button" data-page="content"><i data-lucide="plus"></i> New post</button></div>
-        <article class="panel"><div class="calendar-toolbar"><button class="icon-button" id="prevMonth"><i data-lucide="chevron-left"></i></button><h2 id="calendarMonth"></h2><button class="icon-button" id="nextMonth"><i data-lucide="chevron-right"></i></button><span class="spacer"></span><span class="tag">Local calendar</span></div><div class="calendar-grid" id="calendarGrid"></div></article>
-      </section>
+<button class="nav-item active" data-page="overview">
+<i data-lucide="layout-dashboard"></i>
+<span>Overview</span>
+</button>
 
-      <section class="page" id="page-assistant">
-        <div class="page-heading"><div><p class="eyebrow">YOUR CREATIVE COPILOT</p><h1>AI assistant</h1><p class="muted">Brainstorm content ideas and improve your copy.</p></div><span class="tag purple-tag"><i data-lucide="sparkles"></i> AI workspace</span></div>
-        <div class="assistant-layout"><article class="panel chat-panel"><div class="chat-messages" id="chatMessages"><div class="assistant-message"><span class="assistant-avatar"><i data-lucide="sparkles"></i></span><div><strong>ZINTRIQ assistant</strong><p>Hi! Tell me your topic, audience, and preferred tone. I can help shape a post idea.</p></div></div></div><form id="assistantForm" class="chat-form"><input id="assistantInput" type="text" placeholder="e.g. Create a launch post for my new product..." autocomplete="off"><button class="primary-button" type="submit"><i data-lucide="arrow-up"></i></button></form><small class="muted">AI responses require a configured backend AI endpoint. Without it, this page provides a local prompt helper.</small></article><aside class="panel prompt-panel"><h2>Try a prompt</h2><button class="prompt-chip">Give me 5 post ideas for this week</button><button class="prompt-chip">Rewrite my caption in a professional tone</button><button class="prompt-chip">Suggest hashtags for a product launch</button><button class="prompt-chip">Create a 7-day content plan</button></aside></div>
-      </section>
+<button class="nav-item" data-page="accounts">
+<i data-lucide="network"></i>
+<span>Social accounts</span>
+<b class="nav-count" id="accountNavCount">0</b>
+</button>
 
-      <section class="page" id="page-inbox">
-        <div class="page-heading"><div><p class="eyebrow">COMMUNITY MANAGEMENT</p><h1>Unified inbox</h1><p class="muted">A single place for conversations across channels.</p></div><span class="tag">Inbox preview</span></div>
-        <div class="notice"><i data-lucide="info"></i><span>Connect platform messaging APIs and webhooks through your backend to display real messages here.</span></div>
-        <article class="panel inbox-panel"><div class="inbox-empty"><span class="empty-icon"><i data-lucide="messages-square"></i></span><h2>Your inbox is ready</h2><p>When your backend syncs comments and messages, conversations will appear here.</p><button class="secondary-button" data-page="accounts">Review connected accounts</button></div></article>
-      </section>
+<button class="nav-item" data-page="content">
+<i data-lucide="square-pen"></i>
+<span>Content studio</span>
+</button>
 
-      <section class="page" id="page-analytics">
-        <div class="page-heading"><div><p class="eyebrow">MEASURE WHAT MATTERS</p><h1>Analytics</h1><p class="muted">Understand reach, engagement, and content performance.</p></div><button class="secondary-button" id="refreshAnalytics"><i data-lucide="refresh-cw"></i> Refresh data</button></div>
-        <div class="stats-grid"><article class="stat-card"><div class="stat-top"><span>Total reach</span><i data-lucide="eye"></i></div><strong>—</strong><small class="stat-note">Waiting for analytics API</small></article><article class="stat-card"><div class="stat-top"><span>Engagement</span><i data-lucide="activity"></i></div><strong>—</strong><small class="stat-note">Waiting for analytics API</small></article><article class="stat-card"><div class="stat-top"><span>Link clicks</span><i data-lucide="mouse-pointer-click"></i></div><strong>—</strong><small class="stat-note">Waiting for analytics API</small></article><article class="stat-card"><div class="stat-top"><span>Followers</span><i data-lucide="user-round-plus"></i></div><strong>—</strong><small class="stat-note">Waiting for analytics API</small></article></div>
-        <article class="panel"><div class="panel-heading"><div><h2>Analytics connection</h2><p class="muted">Live metrics will appear after your backend endpoints are connected.</p></div><span class="tag">Not connected</span></div><div class="empty-state compact"><i data-lucide="chart-no-axes-combined"></i><strong>No analytics data yet</strong><span>Configure the analytics API in js/api.js.</span></div></article>
-      </section>
+<button class="nav-item" data-page="calendar">
+<i data-lucide="calendar-days"></i>
+<span>Calendar</span>
+</button>
 
-      <section class="page" id="page-settings">
-        <div class="page-heading"><div><p class="eyebrow">WORKSPACE PREFERENCES</p><h1>Settings</h1><p class="muted">Configure appearance and backend connection.</p></div></div>
-        <div class="settings-grid"><article class="panel settings-card"><h2>Appearance</h2><p class="muted">Choose how ZINTRIQ looks on this device.</p><div class="setting-row"><div><strong>Dark mode</strong><small>Switch between light and dark appearance.</small></div><label class="switch"><input type="checkbox" id="darkModeSetting"><span></span></label></div></article>
-        <article class="panel settings-card"><h2>Backend connection</h2><p class="muted">Set your deployed backend base URL in <code>js/api.js</code>.</p><div class="connection-detail"><span class="status-dot"></span><div><strong id="settingsConnection">Demo mode</strong><small id="apiBaseDisplay">API base URL is not configured.</small></div></div><p class="help-text">Never put private API secrets, OAuth client secrets, or service-role keys in frontend files. Keep them on your backend.</p><button class="secondary-button" id="testApiBtn"><i data-lucide="wifi"></i> Test backend connection</button><p class="muted" id="apiTestResult" aria-live="polite"></p></article>
-        <article class="panel settings-card"><h2>Local data</h2><p class="muted">Drafts and preferences saved by this browser.</p><button class="danger-button" id="clearLocalData"><i data-lucide="trash-2"></i> Clear local drafts</button></article></div>
-      </section>
-      <footer class="footer-note">ZINTRIQ <span>•</span> Social media command center <span>•</span> Frontend workspace</footer>
-    </div>
-  </main>
+<button class="nav-item" data-page="assistant">
+<i data-lucide="sparkles"></i>
+<span>AI assistant</span>
+</button>
+
+<button class="nav-item" data-page="inbox">
+<i data-lucide="inbox"></i>
+<span>Unified inbox</span>
+</button>
+
+<button class="nav-item" data-page="analytics">
+<i data-lucide="chart-no-axes-combined"></i>
+<span>Analytics</span>
+</button>
+
+</nav>
+
+<div class="sidebar-bottom">
+
+<button class="nav-item" data-page="settings">
+<i data-lucide="settings-2"></i>
+<span>Settings</span>
+</button>
+
+<div class="plan-card">
+<strong>Your workspace</strong>
+<p>Connect your backend to unlock live data and automation.</p>
+<button class="text-button" data-page="settings">
+Configure workspace
+</button>
 </div>
+
+<div class="profile-row">
+<div class="avatar">JM</div>
+<div class="profile-copy">
+<strong>Workspace owner</strong>
+<small>Administrator</small>
+</div>
+</div>
+
+</div>
+</aside>
+
+<!-- MAIN AREA -->
+<main class="main-area">
+
+<header class="topbar">
+
+<button class="icon-button menu-toggle" id="menuToggle">
+<i data-lucide="menu"></i>
+</button>
+
+<div class="breadcrumb">
+<span>Workspace</span>
+<i data-lucide="chevron-right"></i>
+<strong id="pageTitle">Overview</strong>
+</div>
+
+<div class="topbar-actions">
+
+<div class="connection-pill">
+<span class="status-dot"></span>
+<span id="connectionLabel">Demo mode</span>
+</div>
+
+<button class="icon-button" id="themeToggle">
+<i data-lucide="moon"></i>
+</button>
+
+<button class="primary-button small" data-page="content">
+<i data-lucide="plus"></i>
+Create post
+</button>
+
+</div>
+</header>
+
+<div class="page-wrap">
+
+<!-- OVERVIEW -->
+<section class="page active" id="page-overview">
+
+<div class="page-heading">
+<div>
+<p class="eyebrow">YOUR SOCIAL MEDIA, IN ONE PLACE</p>
+<h1>Good to see you.</h1>
+<p class="muted">Here's what's happening across your workspace.</p>
+</div>
+
+<button class="secondary-button" id="refreshDashboard">
+<i data-lucide="refresh-cw"></i>
+Refresh
+</button>
+</div>
+
+<div class="stats-grid">
+
+<article class="stat-card">
+<div class="stat-top">
+<span>Connected accounts</span>
+<i data-lucide="users"></i>
+</div>
+<strong id="statAccounts">0</strong>
+<small class="stat-note">Social profiles in workspace</small>
+</article>
+
+<article class="stat-card">
+<div class="stat-top">
+<span>Published posts</span>
+<i data-lucide="send"></i>
+</div>
+<strong id="statPublished">0</strong>
+<small class="stat-note">Posts marked as published</small>
+</article>
+
+<article class="stat-card">
+<div class="stat-top">
+<span>Scheduled posts</span>
+<i data-lucide="calendar-clock"></i>
+</div>
+<strong id="statScheduled">0</strong>
+<small class="stat-note">Upcoming content</small>
+</article>
+
+<article class="stat-card">
+<div class="stat-top">
+<span>Inbox messages</span>
+<i data-lucide="messages-square"></i>
+</div>
+<strong id="statInbox">0</strong>
+<small class="stat-note">Messages in your inbox</small>
+</article>
+
+</div>
+
+<div class="content-grid">
+
+<article class="panel chart-panel">
+<div class="panel-heading">
+<div>
+<h2>Performance snapshot</h2>
+<p class="muted">Engagement overview</p>
+</div>
+<span class="tag">Last 7 days</span>
+</div>
+
+<div class="chart-placeholder">
+<div class="chart-bars">
+<i style="height:35%"></i>
+<i style="height:55%"></i>
+<i style="height:42%"></i>
+<i style="height:76%"></i>
+<i style="height:62%"></i>
+<i style="height:90%"></i>
+<i style="height:70%"></i>
+</div>
+
+<div class="chart-labels">
+<span>Mon</span><span>Tue</span><span>Wed</span>
+<span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+
+<p class="chart-footnote">Connect analytics endpoints to display live metrics.</p>
+</article>
+
+<article class="panel quick-panel">
+<div class="panel-heading">
+<div>
+<h2>Quick actions</h2>
+<p class="muted">Jump back into your workflow</p>
+</div>
+</div>
+
+<button class="action-row" data-page="content">
+<span class="action-icon purple"><i data-lucide="pen-line"></i></span>
+<span><strong>Create content</strong><small>Write and prepare a new post</small></span>
+<i data-lucide="chevron-right"></i>
+</button>
+
+<button class="action-row" data-page="accounts">
+<span class="action-icon blue"><i data-lucide="plug"></i></span>
+<span><strong>Connect accounts</strong><small>Manage your social profiles</small></span>
+<i data-lucide="chevron-right"></i>
+</button>
+
+<button class="action-row" data-page="assistant">
+<span class="action-icon orange"><i data-lucide="sparkles"></i></span>
+<span><strong>Ask AI assistant</strong><small>Get ideas for your next post</small></span>
+<i data-lucide="chevron-right"></i>
+</button>
+</article>
+
+</div>
+
+<article class="panel table-panel">
+<div class="panel-heading">
+<div>
+<h2>Recent content</h2>
+<p class="muted">Your latest drafts and posts</p>
+</div>
+<button class="text-button" data-page="content">View content</button>
+</div>
+
+<div id="recentContent" class="empty-state compact">
+<i data-lucide="files"></i>
+<strong>No content yet</strong>
+<span>Your saved posts will appear here.</span>
+</div>
+</article>
+
+</section>
+
+<!-- ACCOUNTS -->
+<section class="page" id="page-accounts">
+
+<div class="page-heading">
+<div>
+<p class="eyebrow">CHANNEL MANAGEMENT</p>
+<h1>Social accounts</h1>
+<p class="muted">Manage your social media channels.</p>
+</div>
+<button class="primary-button" id="addAccountBtn">Add account</button>
+</div>
+
+<div class="notice">
+<i data-lucide="info"></i>
+<span>Live account linking requires official platform OAuth and backend API permissions.</span>
+</div>
+
+<div class="account-grid" id="accountList"></div>
+
+</section>
+
+<!-- CONTENT STUDIO -->
+<section class="page" id="page-content">
+
+<div class="page-heading">
+<div>
+<p class="eyebrow">PLAN. CREATE. PUBLISH.</p>
+<h1>Content studio</h1>
+<p class="muted">Create and manage your social media content.</p>
+</div>
+<span class="tag">Draft workspace</span>
+</div>
+
+<div class="editor-layout">
+
+<article class="panel editor-panel">
+
+<div class="panel-heading">
+<div>
+<h2>New post</h2>
+<p class="muted">Your content is saved in this browser.</p>
+</div>
+</div>
+
+<label class="field-label" for="postText">Post caption</label>
+
+<textarea id="postText" class="text-area" rows="7" maxlength="2200" placeholder="Write your post here..."></textarea>
+
+<div class="field-meta">
+<span id="charCount">0 / 2200</span>
+<span>Keep your opening line engaging.</span>
+</div>
+
+<label class="field-label">Choose platforms</label>
+
+<div class="platform-checks" id="platformChecks">
+<label><input type="checkbox" value="Instagram"> Instagram</label>
+<label><input type="checkbox" value="Facebook"> Facebook</label>
+<label><input type="checkbox" value="LinkedIn"> LinkedIn</label>
+<label><input type="checkbox" value="X"> X</label>
+</div>
+
+<div class="editor-actions">
+<button class="secondary-button" id="clearPost">Clear</button>
+<button class="primary-button" id="saveDraft">
+<i data-lucide="save"></i> Save draft
+</button>
+</div>
+
+</article>
+
+<aside class="panel preview-panel">
+<div class="panel-heading">
+<h2>Post preview</h2>
+<span class="tag">Preview</span>
+</div>
+
+<div class="preview-card">
+<div class="preview-user">
+<div class="avatar">Z</div>
+<div>
+<strong>Your brand</strong>
+<small>Social post preview</small>
+</div>
+</div>
+
+<p id="postPreview">Your post preview will appear here as you type.</p>
+
+<div class="preview-placeholder">
+<i data-lucide="image"></i>
+<span>Media preview area</span>
+</div>
+
+<div class="preview-footer">
+<i data-lucide="heart"></i>
+<i data-lucide="message-circle"></i>
+<i data-lucide="send"></i>
+</div>
+</div>
+</aside>
+
+</div>
+
+<article class="panel table-panel">
+<div class="panel-heading">
+<div>
+<h2>Saved content</h2>
+<p class="muted">Your saved drafts</p>
+</div>
+</div>
+<div id="contentList"></div>
+</article>
+
+</section>
+
+<!-- CALENDAR -->
+<section class="page" id="page-calendar">
+
+<div class="page-heading">
+<div>
+<p class="eyebrow">PUBLISHING PLAN</p>
+<h1>Content calendar</h1>
+<p class="muted">Review your publishing dates.</p>
+</div>
+<button class="primary-button" data-page="content">New post</button>
+</div>
+
+<article class="panel">
+<div class="calendar-toolbar">
+<button class="icon-button" id="prevMonth">‹</button>
+<h2 id="calendarMonth"></h2>
+<button class="icon-button" id="nextMonth">›</button>
+<span class="spacer"></span>
+<span class="tag">Local calendar</span>
+</div>
+
+<div class="calendar-grid" id="calendarGrid"></div>
+</article>
+
+</section>
+
+<!-- AI ASSISTANT -->
+<section class="page" id="page-assistant">
+
+<div class="page-heading">
+<div>
+<p class="eyebrow">YOUR CREATIVE COPILOT</p>
+<h1>AI assistant</h1>
+<p class="muted">Brainstorm ideas and improve your content.</p>
+</div>
+<span class="tag purple-tag">AI workspace</span>
+</div>
+
+<div class="assistant-layout">
+
+<article class="panel chat-panel">
+
+<div class="chat-messages" id="chatMessages">
+<div class="assistant-message">
+<span class="assistant-avatar"><i data-lucide="sparkles"></i></span>
+<div>
+<strong>ZINTRIQ assistant</strong>
+<p>Hi! Tell me your topic, audience and preferred tone.</p>
+</div>
+</div>
+</div>
+
+<form id="assistantForm" class="chat-form">
+<input id="assistantInput" type="text" placeholder="Write your prompt..." autocomplete="off">
+<button class="primary-button" type="submit">↑</button>
+</form>
+
+<small class="muted">AI generation needs a configured backend AI endpoint.</small>
+
+</article>
+
+<aside class="panel prompt-panel">
+<h2>Try a prompt</h2>
+<button class="prompt-chip">Give me 5 post ideas for this week</button>
+<button class="prompt-chip">Rewrite my caption professionally</button>
+<button class="prompt-chip">Suggest hashtags for a product launch</button>
+<button class="prompt-chip">Create a 7-day content plan</button>
+</aside>
+
+</div>
+</section>
+
+<!-- INBOX -->
+<section class="page" id="page-inbox">
+
+<div class="page-heading">
+<div>
+<p class="eyebrow">COMMUNITY MANAGEMENT</p>
+<h1>Unified inbox</h1>
+<p class="muted">Manage conversations across channels.</p>
+</div>
+<span class="tag">Inbox preview</span>
+</div>
+
+<div class="notice">
+<i data-lucide="info"></i>
+<span>Connect messaging APIs through your backend to display real messages.</span>
+</div>
+
+<article class="panel inbox-panel">
+<div class="inbox-empty">
+<span class="empty-icon"><i data-lucide="messages-square"></i></span>
+<h2>Your inbox is ready</h2>
+<p>Messages will appear here after backend integration.</p>
+<button class="secondary-button" data-page="accounts">Review accounts</button>
+</div>
+</article>
+
+</section>
+
+<!-- ANALYTICS -->
+<section class="page" id="page-analytics">
+
+<div class="page-heading">
+<div>
+<p class="eyebrow">MEASURE WHAT MATTERS</p>
+<h1>Analytics</h1>
+<p class="muted">Understand your social media performance.</p>
+</div>
+<button class="secondary-button" id="refreshAnalytics">Refresh data</button>
+</div>
+
+<div class="stats-grid">
+
+<article class="stat-card">
+<div class="stat-top"><span>Total reach</span><i data-lucide="eye"></i></div>
+<strong>—</strong>
+<small class="stat-note">Waiting for analytics API</small>
+</article>
+
+<article class="stat-card">
+<div class="stat-top"><span>Engagement</span><i data-lucide="activity"></i></div>
+<strong>—</strong>
+<small class="stat-note">Waiting for analytics API</small>
+</article>
+
+<article class="stat-card">
+<div class="stat-top"><span>Link clicks</span><i data-lucide="mouse-pointer-click"></i></div>
+<strong>—</strong>
+<small class="stat-note">Waiting for analytics API</small>
+</article>
+
+<article class="stat-card">
+<div class="stat-top"><span>Followers</span><i data-lucide="user-round-plus"></i></div>
+<strong>—</strong>
+<small class="stat-note">Waiting for analytics API</small>
+</article>
+
+</div>
+
+<article class="panel">
+<div class="panel-heading">
+<div>
+<h2>Analytics connection</h2>
+<p class="muted">Live metrics require backend integration.</p>
+</div>
+<span class="tag">Not connected</span>
+</div>
+<div class="empty-state compact">
+<i data-lucide="chart-no-axes-combined"></i>
+<strong>No analytics data yet</strong>
+<span>Configure your analytics API.</span>
+</div>
+</article>
+
+</section>
+
+<!-- SETTINGS -->
+<section class="page" id="page-settings">
+
+<div class="page-heading">
+<div>
+<p class="eyebrow">WORKSPACE PREFERENCES</p>
+<h1>Settings</h1>
+<p class="muted">Configure your workspace.</p>
+</div>
+</div>
+
+<div class="settings-grid">
+
+<article class="panel settings-card">
+<h2>Appearance</h2>
+<p class="muted">Choose your theme.</p>
+
+<div class="setting-row">
+<div>
+<strong>Dark mode</strong>
+<small>Switch between light and dark appearance.</small>
+</div>
+
+<label class="switch">
+<input type="checkbox" id="darkModeSetting">
+<span></span>
+</label>
+</div>
+</article>
+
+<article class="panel settings-card">
+<h2>Backend connection</h2>
+<p class="muted">Configure your backend URL in api.js.</p>
+
+<div class="connection-detail">
+<span class="status-dot"></span>
+<div>
+<strong id="settingsConnection">Demo mode</strong>
+<small id="apiBaseDisplay">API URL not configured.</small>
+</div>
+</div>
+
+<p class="help-text">Never put private API keys or OAuth secrets in frontend code.</p>
+
+<button class="secondary-button" id="testApiBtn">
+<i data-lucide="wifi"></i> Test backend
+</button>
+
+<p class="muted" id="apiTestResult"></p>
+</article>
+
+<article class="panel settings-card">
+<h2>Local data</h2>
+<p class="muted">Manage drafts saved in this browser.</p>
+
+<button class="danger-button" id="clearLocalData">
+<i data-lucide="trash-2"></i> Clear local drafts
+</button>
+</article>
+
+</div>
+</section>
+
+<footer class="footer-note">
+ZINTRIQ • Social media command center
+</footer>
+
+</div>
+</main>
+</div>
+
 <div class="toast-region" id="toastRegion" aria-live="polite"></div>
-<script src="js/storage.js"></script>
-<script src="js/api.js"></script>
-<script src="js/theme.js"></script>
-<script src="js/navigation.js"></script>
-<script src="js/dashboard.js"></script>
-<script src="js/accounts.js"></script>
-<script src="js/content.js"></script>
-<script src="js/calendar.js"></script>
-<script src="js/ai-assistant.js"></script>
-<script src="js/inbox.js"></script>
-<script src="js/analytics.js"></script>
-<script src="js/settings.js"></script>
-<script src="js/main.js"></script>
+
+<!-- JAVASCRIPT FILES: all in repository root -->
+<script src="storage.js"></script>
+<script src="api.js"></script>
+<script src="theme.js"></script>
+<script src="navigation.js"></script>
+<script src="dashboard.js"></script>
+<script src="accounts.js"></script>
+<script src="content.js"></script>
+<script src="calendar.js"></script>
+<script src="ai-assistant.js"></script>
+<script src="inbox.js"></script>
+<script src="analytics.js"></script>
+<script src="settings.js"></script>
+<script src="main.js"></script>
+
 </body>
 </html>
